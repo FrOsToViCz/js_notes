@@ -108,24 +108,22 @@ const data = [
 
 // policz średnią wieku
 
-function calcAvgAge(people){
+function calcAvgAge(people) {
     let totalAge = 0;
 
     for (let i = 0; i < people.length; i++) {
-    totalAge += people[i].age;
+        totalAge += people[i].age;
 
-    // for (let i = 0; i < people.length; i++) {
-//     totalAge += people[i].age;
-// }
-}
+    }
     return Math.round(totalAge / people.length);
 }
 
-function calcAvgAge2(people){
+function calcAvgAge2(people) {
     return people
         .map((person) => person.age)
         .reduce((acc, ce) => acc + ce) / people.length;
 }
+
 // const result = calcAvgAge(data)
 // console.log(result);
 
@@ -164,7 +162,7 @@ const calcAvgAgeCustom2 = function (people) {
 
 const calcAvgAgeCustom3 = function (items) {
     for (const item of items) {
-        if(item.city.toLowerCase() === 'krakow') {
+        if (item.city.toLowerCase() === 'krakow') {
             return true;
         }
     }
@@ -172,5 +170,42 @@ const calcAvgAgeCustom3 = function (items) {
     return false;
 }
 
-const result = calcAvgAgeCustom3(data);
-console.log(result);
+// const result = calcAvgAgeCustom3(data);
+// console.log(result);
+
+// czy wszyscy kochają js (includes/indexOf)
+
+
+function isEveryoneLovesJS(items) {
+    for (let item of items) {
+        if (!item.hobbies.includes('js')) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const isEveryoneLovesJS2 = (items) => items
+    .every((items) => !items.hobbies.includes('js'))
+
+// const result = isEveryoneLovesJS(data);
+// console.log(result)
+
+// ile jest hobbies bez powtórzeń (unique)
+
+function howManyUniqueHobbies(elements){
+    const hobbies = new Set();
+
+    for (const element of elements) {
+        for (const hobby of element.hobbies) {
+            hobbies.add(hobby);
+        }
+    }
+
+    return hobbies.size;
+}
+
+const howManyUniqueHobbies2 = (elements) => new Set(elements.flatMap((element) => element.hobbies)).size;
+
+// const result = howManyUniqueHobbies(data);
+// console.log(result)
